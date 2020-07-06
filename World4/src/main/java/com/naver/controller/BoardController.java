@@ -61,12 +61,34 @@ import org.springframework.web.bind.annotation.RequestMapping;
   	@Inject
 
   	private BoardService bService;
+  	
+  	@RequestMapping(value = "delete/{bno]",method=RequestMethod.GET)
+  	public String delete(@PathVariable("bno")int bno) {
+  		bService.delete(bno);
+  		return "redirect:/bpard/list";
+  	}
+  	
+  	@RequestMapping(value="/update",method =RequestMethod.POST)
+  	public String update(BoardVO vo) {
+  		bService.update(vo);
+  		
+  		return "redirect:/board/read/"+vo.getBno();//몇번째 글에 대해 읽어오겠다
+  	}
+  	
+  	
+  	@RequestMapping(value = "/update/{bno}",method=RequestMethod.GET)
+  	public String update(Model model,@PathVariable("bno")int bno) {
+  			BoardVO vo =bService.updateUI(bno);
+  			model.addAttribute("vo", vo);
+  			return "board/update";
+  	}
 
   	
   	@RequestMapping(value = "/read/{bno}", method= RequestMethod.GET)
-  	public void read(Model model, @PathVariable("bno")int bno){
+  	public String read(Model model, @PathVariable("bno")int bno){
   		BoardVO vo =bService.read(bno);
   		model.addAttribute("vo", vo);
+  		return "board/read";
   		
   	}
   	

@@ -43,4 +43,28 @@ public class BoardDAOImpl implements BoardDAO {
 		return session.selectOne(NS+".read",bno);
 	}
 
+	@Override
+	public void increaseViewcnt(int bno) {
+		// TODO Auto-generated method stub
+	session.update(NS+".increaseViewcnt", bno);	
+	}
+
+	@Override
+	public BoardVO updateUI(int bno) {
+		// TODO Auto-generated method stub
+		return session.selectOne(NS+".updateUI", bno);
+	}
+
+	@Override
+	public void update(BoardVO vo) {
+	 session.update(NS+".update",vo);
+		
+	}
+
+	@Override
+	public void delete(int bno) {
+		session.delete(NS+".delete",bno);
+		
+	}
+
 }
