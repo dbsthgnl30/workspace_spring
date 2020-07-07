@@ -23,9 +23,6 @@ public class MemberController {
 	@Inject
 	private MemberService memberService;
 
-	
-	
-	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public void list(Model model) {
 		List<MemberDTO> list = memberService.list();
