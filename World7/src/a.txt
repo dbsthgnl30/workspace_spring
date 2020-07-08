@@ -1,0 +1,29 @@
+<div class="row">
+			<div data-backdrop="static" id="mymodal" class="modal fade"
+				tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+							<h4 class="modal-rno">rno data</h4>
+						</div>
+						<div class="modal-body">
+							<p class="modal-replyer">김독자&hellip;</p>
+							<input class="modal-replytext form-control" value="replytext">
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-info modal-update-btn"
+								data-dismiss="modal">수정이</button>
+						</div>
+					</div>
+					<!-- /.modal-content -->
+				</div>
+				<!-- /.modal-dialog -->
+			</div>
+			<!-- /.modal -->
+
+
+		</div>

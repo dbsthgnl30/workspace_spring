@@ -1,0 +1,41 @@
+$("#replies").on("click",".replymodify", function(){
+
+              var rno =  $(this).attr("data-rno");
+               var replyer = $(this).attr("data-name")
+                var replytext = $(this).prev().text(); /*경로앞 p테그를 가리킴...?*/
+
+                $(".modal-rno").text(rno);    /*가져오세용*/
+                $(".modal-replyer").text(replyer);    /*가져오세용*/
+                $(".modal-replytext").val(replytext);    /*가져오세용*/
+                
+              $("#mymodal").modal("show");
+                        
+           });
+                      $(".modal-update-btn").click(function(){
+                              var rno= $(".modal-rno").text();
+                               var replytext =$(".modal-replytext").val();
+
+                            $.ajax({
+                                   type : 'put',
+                                   url : '/replies/'+rno,
+                                   headers:{
+                                      "Content-Type" : "application/json","X-HTTP-Method-Override" : "PUT"
+
+                                       },
+                                       dataType: 'text',
+                                       data : JSON.stringify({
+                                              replytext : replytext
+                                              
+                                           }),
+                                           success : function(result){
+                                                  if(result === "success"){
+                                                      getList(bno);
+                                                      }
+                                               },
+                                               error : function(request, status, error){
+                                                   console.log(error);
+                                                   }
+                          });
+
+                          });
+     

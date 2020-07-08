@@ -25,25 +25,23 @@ public class HomeController {
 	@RequestMapping(value="/insert",method=RequestMethod.GET)
 	
 	
-	public String insert( Model model,String name){
-		name=toKor(name);
-		
-		model.addAttribute("name","name");
-		return "insert";
-		
-				}
-	
-	
-	private String tokor(String name) {
-		
-		try {
-		
-		return new String (name.getBytes("8859_1"),"UTF-8");
-	}catch (Exception e) {
-		e.printStackTrace();
-	}
-
-}
+	/*
+	 * public String insert( Model model,String name){ name=toKor(name);
+	 * 
+	 * model.addAttribute("name","name"); return "insert";
+	 * 
+	 * }
+	 * 
+	 * 
+	 * private String tokor(String name) {
+	 * 
+	 * try {
+	 * 
+	 * return new String (name.getBytes("8859_1"),"UTF-8"); }catch (Exception e) {
+	 * e.printStackTrace(); }
+	 * 
+	 * }
+	 */
 	
 	@RequestMapping(value="/list",method=RequestMethod.GET)
 	public String list() {
