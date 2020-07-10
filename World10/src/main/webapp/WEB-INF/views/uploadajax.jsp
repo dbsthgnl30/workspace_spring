@@ -50,6 +50,9 @@
 					contentType: false,
 					success : function(result){
 						var str = "<div><a href = '#'>";
+						
+
+						
 						str += getOriginalName(result);
 						str += "</a></div>";
 						$(".uploadedList").append(str);

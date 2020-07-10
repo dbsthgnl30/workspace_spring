@@ -47,7 +47,7 @@ public class Utils {
       String[] paths = { yearPath, monthPath, datePath };
       return paths;
    }
-
+ 
    // 반환을 배열로 잡아서 값을 여러개 반환한다.
    public static int[] getDateInfo() {
       Calendar cal = Calendar.getInstance();
