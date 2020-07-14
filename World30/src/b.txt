@@ -1,0 +1,92 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+   pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+   href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+   src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+   src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="/resources/js/uploadfn.js" type="text/javascript"></script>
+<title>Insert title here</title>
+<style type="text/css">
+.fileDrop {
+   width: 80%;
+   height: 200px;
+   border: 1px solid red;
+   margin: auto;
+}
+
+.uploadedList {
+   margin-top: 50px;
+}
+/* 앞의 점 없애기 */
+.uploadedList li {
+   list-style: none;
+}
+
+.orifilename {
+   overflow: hidden;
+   white-space: nowrap;
+   text-overflow: ellipsis;
+}
+</style>
+</head>
+<body>
+   <!-- container면 좌우 여백, container-fluid는 여백 x -->
+   <div class="container">
+      <div class="row text-center">
+         <h1>글쓰기</h1>
+      </div>
+      <div calss="row">
+         <form action="/board/update" method="POST">
+            <input type="hidden" name="bno" value="${vo.bno }">
+            <div class="form-group">
+               <label for="title">제목</label> <input value="${vo.title}"
+                  name="title" id="title" class="form-control">
+            </div>
+            <div class="form-group">
+               <label for="writer">작성자</label> <input value="${vo.writer}"
+                  name="writer" id="writer" class="form-control">
+            </div>
+            <div class="form-group">
+               <label for="content">내용</label>
+               <textarea rows="5" name="content" id="content" class="form-control">${vo.content}</textarea>
+            </div>
+            <div class="form-group">
+            <label>업로드할 파일을 드랍시키세요.</label>
+            <div class="fileDrop"></div>
+            
+            <!-- 해당 형태로 파일이 들어올 것 -->
+            <ul class="uploadedList clearfix">
+            
+            </ul>
+         </div>
+         </form>
+         <div class="form-group">
+            <button class="btn btn-danger" id="updatebtn">수정</button>
+            <button class="btn btn-danger" id="listbtn">목록</button>
+         </div>
+      </div>
+   </div>
+   <script type="text/javascript">
+      $(document).ready(function() {
+
+         
+         $("#updatebtn").click(function() {
+            $("form").submit();
+         });
+         $("#listbtn").click(function() {
+            location.assign("/board/list");
+         });
+      });
+   </script>
+</body>
+</html>
